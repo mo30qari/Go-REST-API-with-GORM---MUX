@@ -20,10 +20,10 @@ func handleRequests() {
 	router := mux.NewRouter()
 	
 	router.HandleFunc("/", welcome).Methods("GET")
-	router.HandleFunc("/game/{name}/{genre}/{price}", createGame).Methods("GET")
+	router.HandleFunc("/game/{name}/{genre}/{price}", createGame).Methods("POST")
 	router.HandleFunc("/games", getAllGames).Methods("GET")
 	router.HandleFunc("/game/{name}", getGame).Methods("GET")
-	router.HandleFunc("/game/{name}", updateGame).Methods("PUT")
+	router.HandleFunc("/game/{name}/{genre}", updateGameGenre).Methods("PUT")
 	router.HandleFunc("/game/{name}", deleteGame).Methods("DELETE")
 	
 	log.Fatal(http.ListenAndServe(":8080", router))
